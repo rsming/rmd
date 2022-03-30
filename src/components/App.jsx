@@ -1,45 +1,32 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect } from 'react'
 import SettlementForm from "./SettlementForm"
 import Search from "./Search"
 import SettlementInfoRow from "./SettlementInfoRow"
 
 function App() {
 
-  let [settlementList, setSettlementList] = useState([]);
   let [query, setQuery] = useState("");
-
-  // const fetchData = useCallback(() => {
-  //   console.log(`fetch data for {query}`);
-  //   fetch('./data.json')
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       setSettlementList(data)
-  //     });
-  // }, [])
-
-  // useEffect(() => {
-  //   fetchData()
-  // }, [fetchData]);
+  let [settlementList, setSettlementList] = useState([]);
 
   useEffect(() => {
     console.log(query, '- Has changed')
     if (query.length > 3) {
       console.log("search ...");
-      console.log(`fetch data for {query}`);
+      console.log(`fetch data for ${query}`);
       fetch('./data.json')
         .then(response => response.json())
         .then(data => {
           setSettlementList(data)
         });
+    } else {
+      setSettlementList([]);
     }
   },[query])
 
-  // function onQueryChange(query) {
-  //   console.log(`on query change: ${query}`);
-  // }
-
-  function onUpdateSettlement(rowId) {
+  function onUpdateSettlementRequested(rowId) {
     console.log(`on update settlement: ${rowId}`);
+    let settlmnt = settlementList[rowId];
+    console.log(`update: ${settlmnt.rowId}`);
   }
 
   return (
@@ -57,7 +44,7 @@ function App() {
         {settlementList.map(settlement => (
             <SettlementInfoRow key={settlement.rowId}
               settlement={settlement}
-              onUpdateSettlement={(settlementId) => onUpdateSettlement(settlementId)}
+              onUpdateSettlement={(settlementId) => onUpdateSettlementRequested(settlementId)}
             />
           ))
         }
