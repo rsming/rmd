@@ -15,3 +15,4 @@ npm run dev
 ### resources ###
 
  - https://vitejs.dev/guide/
+ - https://github.com/LinkedInLearning/react-interface-2880067
