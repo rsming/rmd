@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import SettlementForm from "./SettlementForm"
 import Search from "./Search"
 import SettlementInfoRow from "./SettlementInfoRow"
-import { clearData, searchStatusInitialMessage } from './DataAccess'
+import { clearData, searchStatusInitialMessage, fetchData } from './DataAccess'
 
 function App() {
 
@@ -15,12 +15,7 @@ function App() {
     console.log(query, '- Has changed')
     if (query.length > 3) {
       console.log(`fetch data for ${query}`);
-      fetch('./data.json')
-        .then(response => response.json())
-        .then(data => {
-          setSettlementList(data);
-          setSearchStatus(`Found ${data.length} records for '${query}'`)
-        });
+      fetchData(query, setSettlementList, setSearchStatus);
     } else {
       setSearchStatus(searchStatusInitialMessage);
       setSettlementList([]);
@@ -39,22 +34,41 @@ function App() {
   }
 
   return (
-    <div className="">
-      <h1 className="" />
-        {/* <BiCalendar className="inline-block text-red-400 align-top" />Your Appointments</h1> */}
-      <SettlementForm formData={formData} setFormData={setFormData} onPostSettlementRequested={onPostSettlementRequested} />
 
-      <Search query={query} onQueryChange={(myQuery) => setQuery(myQuery)} searchStatus={searchStatus} />
+    <div className="columns is-centered">
+    <div className="column is-half">
 
-      <ul className="">
-        {settlementList.map(settlement => (
-            <SettlementInfoRow key={settlement.rowId}
-              settlement={settlement}
-              onUpdateSettlement={(settlementId) => onUpdateSettlementRequested(settlementId)}
-            />
-          ))
-        }
-      </ul>
+    <div className="container">
+
+     <div/>
+
+      <div className="card card-content">
+        <SettlementForm formData={formData} setFormData={setFormData} onPostSettlementRequested={onPostSettlementRequested} />
+      </div>
+
+      <div/>
+
+      <div className="card card-content">
+        <Search query={query} onQueryChange={(myQuery) => setQuery(myQuery)} searchStatus={searchStatus} />
+        <table className="table">
+          <thead>
+            <tr>
+              <th />
+              <th><abbr title="Customer Name">Name</abbr></th>
+              <th><abbr title="Start Date">Start Date</abbr></th>
+            </tr>
+          </thead>
+          <tbody>
+            { settlementList.map(settlement => (
+                <SettlementInfoRow key={settlement.rowId} settlement={settlement}
+                  onUpdateSettlement={(settlementId) => onUpdateSettlementRequested(settlementId)} />
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+    </div>
     </div>
   );
 }

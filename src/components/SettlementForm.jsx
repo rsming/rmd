@@ -19,46 +19,45 @@ const SettlementForm = ({formData, setFormData, onPostSettlementRequested}) => {
   }
 
   return (
+
     <div>
-      {/* <button onClick={console.log("add appointment button click")} className="">
-        <div>Add Appointment</div>
-      </button> */}
-      <div className="">
-        <div className="">
-          <label htmlFor="customerName" className="">
-            Customer Name
-        </label>
-          <div className="">
-            <input type="text" name="customerName" id="customerName"
+
+      <div className="field">
+        <label htmlFor="customerName" className="label">Customer Name</label>
+        <div className="control has-icons-left has-icons-right">
+          <input type="text" className="input is-success"
+              name="customerName" id="customerName"
               onChange={(event) => { setFormData({ ...formData, customerName: event.target.value }) }}
               value={formData.customerName}
-              className="" />
-          </div>
-        </div>
-
-        <div className="">
-          <label htmlFor="startDate" className="">
-            Apt Date
-        </label>
-          <div className="">
-            <input type="date" name="startDate" id="startDate"
-              onChange={(event) => { setFormData({ ...formData, startDate: event.target.value }) }}
-              value={formData.startDate}
-              className="" />
-          </div>
-        </div>
-
-        <div className="">
-          <div className="">
-            <button type="submit" onClick={clearForm} className="">
-                Clear
-            </button>
-            <button type="submit" onClick={formDataPublish} className="">
-                Submit
-            </button>
-          </div>
+              placeholder="Customer first and last names" />
+          <span className="icon is-small is-left">
+            <i className="fas fa-user"></i>
+          </span>
         </div>
       </div>
+
+      <div className="field">
+        <label htmlFor="startDate" className="label">Start Date</label>
+        <div className="control has-icons-left has-icons-right">
+          <input type="date" className="input is-success"
+            name="startDate" id="startDate"
+            onChange={(event) => { setFormData({ ...formData, startDate: event.target.value }) }}
+            value={formData.startDate} />
+          <span className="icon is-small is-left">
+            <i className="fas fa-calendar"></i>
+          </span>
+        </div>
+      </div>
+
+      <div className="field is-grouped">
+        <div className="control">
+          <button className="button is-link" onClick={clearForm}>Submit</button>
+        </div>
+        <div className="control">
+          <button className="button is-link is-light"onClick={formDataPublish}>Clear</button>
+        </div>
+      </div>
+
     </div>
   )
 }

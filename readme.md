@@ -23,3 +23,5 @@ npm run dev
 
  - https://vitejs.dev/guide/
  - https://github.com/LinkedInLearning/react-interface-2880067
+ - https://fontawesome.com/v5/search
+ 

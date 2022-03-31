@@ -13,5 +13,10 @@
     "rowId": "2",
     "customerName": "Scooter",
     "startDate": "2018-11-28"
+  },
+  {
+    "rowId": "3",
+    "customerName": "Scooter Shooter",
+    "startDate": "2001-11-28"
   }
 ]
