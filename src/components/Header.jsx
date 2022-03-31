@@ -14,7 +14,7 @@ class Header extends Component {
   
             <div id="main-menu" className="navbar-menu">
               <div className="navbar-end">
-                <p className="navbar-item" to="/signin">
+                <p className="navbar-item" to="/userinfo">
                   <span className="">Welcome Mr. User</span>
                 </p>
                 <p className="navbar-item" to="/signin">
@@ -23,7 +23,7 @@ class Header extends Component {
                   </span>
                   <span>Login</span>
                 </p>
-                <p className="navbar-item" to="/signin">
+                <p className="navbar-item" to="/logout">
                   <span className="icon">
                     <i className="fas fa-sign-out-alt" />
                   </span>
