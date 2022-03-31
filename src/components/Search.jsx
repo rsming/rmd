@@ -1,5 +1,5 @@
 
-const Search = ({ query, onQueryChange }) => {
+const Search = ({ query, onQueryChange, searchStatus }) => {
   return (
     <div className="">
       <div className="">
@@ -9,6 +9,7 @@ const Search = ({ query, onQueryChange }) => {
       <input type="text" name="query" id="query" value={query}
           onChange={(event) => { onQueryChange(event.target.value) }}
           className="" placeholder="Search" />
+      <p className="">{ searchStatus }</p>
     </div>
   )
 }

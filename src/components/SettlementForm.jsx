@@ -1,23 +1,20 @@
-// import { BiCalendarPlus } from "react-icons/bi";
-import { useState } from 'react';
+import { clearData } from './DataAccess'
 
-const SettlementForm = ({ onSendAppointment }) => {
+const SettlementForm = ({formData, setFormData, onPostSettlementRequested}) => {
 
-  const clearData = {
-    rowId: '',
-    custometName: '',
-    startDate: ''
+  function clearForm() {
+    console.log('clear form');
+    setFormData(clearData);
   }
-
-  let [formData, setFormData] = useState(clearData)
 
   function formDataPublish() {
     const settlementInfo = {
-      id: formData.rowId,
+      rowId: formData.rowId,
       custometName: formData.custometName,
       startDate: formData.startDate
     }
     console.log("push request for:" + settlementInfo.id + ":" + settlementInfo.custometName);
+    onPostSettlementRequested(settlementInfo);
     setFormData(clearData);
   }
 
@@ -53,9 +50,12 @@ const SettlementForm = ({ onSendAppointment }) => {
 
         <div className="">
           <div className="">
+            <button type="submit" onClick={clearForm} className="">
+                Clear
+            </button>
             <button type="submit" onClick={formDataPublish} className="">
-              Submit
-          </button>
+                Submit
+            </button>
           </div>
         </div>
       </div>

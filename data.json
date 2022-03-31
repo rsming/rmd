@@ -2,16 +2,16 @@
   {
     "rowId": "0",
     "customerName": "Pepe",
-    "startDate": "2018-11-28 13:30"
+    "startDate": "2018-11-28"
   },
   {
     "rowId": "1",
     "customerName": "Rio",
-    "startDate": "2018-11-28 10:15"
+    "startDate": "2018-11-28"
   },
   {
     "rowId": "2",
     "customerName": "Scooter",
-    "startDate": "2018-11-28 14:45"
+    "startDate": "2018-11-28"
   }
 ]
