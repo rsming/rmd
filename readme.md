@@ -1,4 +1,11 @@
 
+### frameworks
+
+```bash
+npm install bulma
+npm install bulma-start
+npm install jquery
+```
 
 ### new project generation
 
